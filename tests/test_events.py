@@ -29,7 +29,7 @@ def test_create_and_list_events():
 
     assert response.status_code == 200
     assert len(response.json) == 1
-    # assert response.json["title"] == "Meeting"
+    assert response.json[0]["title"] == "Meeting"
 
 
 def test_update_event():
