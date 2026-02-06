@@ -29,7 +29,7 @@ def test_create_and_list_events():
 
     assert response.status_code == 200
     assert len(response.json) == 1
-    assert response.json[0]["title"] == "Meeting"
+    assert response.json["title"] == "Meeting"
 
 
 def test_update_event():
@@ -38,13 +38,15 @@ def test_update_event():
 
     register_and_login(client)
 
-    client.post("/events", json={
+    response = client.post("/events", json={
         "email": "user@test.com",
         "title": "Old title",
         "description": "",
         "start_time": "2026-02-10T10:00",
         "end_time": "2026-02-10T11:00"
     })
+
+    assert response.status_code == 201
 
     response = client.put("/events/1", json={
         "email": "user@test.com",

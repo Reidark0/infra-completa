@@ -20,6 +20,7 @@ def list_all():
 @events_bp.route("/events/<int:event_id>", methods=["PUT"])
 def update():
     data = request.get_json()
+    event_id = data["id"]
     event = update_event(event_id, data["email"], data)
 
     if not event:
@@ -31,5 +32,6 @@ def update():
 @events_bp.route("/events/<int:event_id>", methods=["DELETE"])
 def delete(event_id):
     data = request.get_json()
+    event_id = data["id"]
     delete_event(event_id, data["email"])
     return "", 204
