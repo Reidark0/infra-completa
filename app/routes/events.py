@@ -17,7 +17,7 @@ def list_all():
     return jsonify({"message": "Eventos listados"}), 200
 
 
-@events_bp.route("/events/<int:event_id>", methods=["PUT"])
+@events_bp.route("/events/<int:id>", methods=["PUT"])
 def update():
     data = request.get_json()
     event_id = data["id"]

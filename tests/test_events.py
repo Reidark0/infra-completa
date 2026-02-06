@@ -63,7 +63,7 @@ def test_delete_event():
 
     register_and_login(client)
 
-    client.post("/events", json={
+    response = client.post("/events", json={
         "email": "user@test.com",
         "title": "Temp event",
         "description": "",
@@ -71,6 +71,8 @@ def test_delete_event():
         "end_time": "2026-02-10T11:00"
     })
 
+    assert response.status_code == 201
+    
     response = client.delete("/event/1", json={
         "email": "user@test.com"
     })
