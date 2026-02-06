@@ -73,7 +73,7 @@ def test_delete_event():
 
     assert response.status_code == 201
 
-    response = client.delete("/event/1", json={
+    response = client.delete("/events/1", json={
         "email": "user@test.com"
     })
 
