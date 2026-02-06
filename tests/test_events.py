@@ -21,7 +21,7 @@ def test_create_and_list_events():
         "end_time": "2026-02-10T11:00"
     })
 
-    assert response.status == 201
+    assert response.status_code == 201
 
     response = client.get("/events", query_string={
         "email": "user@test.com"
@@ -46,7 +46,7 @@ def test_update_event():
         "end_time": "2026-02-10T11:00"
     })
 
-    response = client.put("/events", json={
+    response = client.put("/events/1", json={
         "email": "user@test.com",
         "title": "New title"
     })
