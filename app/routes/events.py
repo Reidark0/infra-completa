@@ -7,14 +7,14 @@ events_bp = Blueprint("events", __name__)
 def create():
     data = request.get_json()
     event = create_event(data["email"], data)
-    return jsonify(event), 201
+    return jsonify({"message": "Evento criado"}), 201
 
 
 @events_bp.route("/events", methods=["GET"])
 def list_all():
     user_email = request.args.get("email")
     events = list_events(user_email)
-    return jsonify(events), 200
+    return jsonify({"message": "Eventos listados"}), 200
 
 
 @events_bp.route("/events/<int:event_id>", methods=["PUT"])
@@ -23,7 +23,7 @@ def update():
     event = update_event(event_id, data["email"], data)
 
     if not event:
-        return jsonify({"message": "event not found"}), 404
+        return jsonify({"message": "Evento nao encontrado"}), 404
     
     return jsonify(event), 200
 
