@@ -10,6 +10,6 @@ def create_app():
         return {"status": "ok"}, 200
 
     app.register_blueprint(auth_bp)
-    app.register_blueprint(events_bp)
+    # app.register_blueprint(events_bp)
 
     return app
