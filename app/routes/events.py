@@ -30,6 +30,6 @@ def update():
 
 @event_bp.route("/events/<int:event_id>", methods=["DELETE"])
 def delete(event_id):
-    data = resquest.get_json()
+    data = request.get_json()
     delete_event(event_id, data["email"])
     return "", 204

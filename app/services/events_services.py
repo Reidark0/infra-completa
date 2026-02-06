@@ -1,4 +1,4 @@
-_events - []
+_events = []
 _event_id_counter = 1
 
 def create_event(user_email, data):
