@@ -1,6 +1,7 @@
 # Python cache
 __pycache__/
 *.py[cod]
+*/__pycache__/
 
 # Virtualenv
 .venv/
@@ -13,3 +14,4 @@ env/
 # IDE
 .vscode/
 .idea/
+
