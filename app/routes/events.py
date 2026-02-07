@@ -14,7 +14,7 @@ def create():
 def list_all():
     user_email = request.args.get("email")
     events = list_events(user_email)
-    return jsonify({"message": "Eventos listados"}), 200
+    return jsonify(events), 200
 
 
 @events_bp.route("/events/<int:event_id>", methods=["PUT"])

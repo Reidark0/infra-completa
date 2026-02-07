@@ -20,7 +20,7 @@ def create_event(user_email, data):
 
 
 def list_events(user_email):
-    return [event for event in _events if event["user_email"] == user_email]
+    return [e for e in _events if e["user_email"] == user_email]
 
 
 def update_event(event_id, user_email, data):
@@ -34,6 +34,6 @@ def update_event(event_id, user_email, data):
 def delete_event(event_id, user_email):
     global _events
     _events = [
-        event for event in _events
-        if not (event["id"] == event_id and event["user_email"] == user_email)
+        e for e in _events
+        if not (e["id"] == event_id and e["user_email"] == user_email)
     ]
