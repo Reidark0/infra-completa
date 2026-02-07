@@ -16,9 +16,11 @@ Foco no processo, a complexidade vai ser na infra, não na aplicação
 
 
 ## Status
-- Esteira embrionária
-- Flask existente
-- Testes básicos
+- Esteira Básica
+- Flask Backend funcional
+- Testes unitários
+- PostgreSQL inicial
+- Dockerlocal
 
 
 # Previsão das ferramentas que vão ser usadas 
