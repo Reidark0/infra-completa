@@ -6,8 +6,8 @@ services:
     container_name: agenda_db
     environment:
       POSTGRES_DB: agenda
-      POSTGRES_USER: agensa_user
-      POSTGRES_PASSWORD: agensa_pass
+      POSTGRES_USER: agenda_user
+      POSTGRES_PASSWORD: agenda_pass
     ports:
       - "5432:5432"
     volumes:

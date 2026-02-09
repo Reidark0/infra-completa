@@ -2,3 +2,4 @@ pytest
 semgrep
 flask
 werkzeug
+psycopg2-binary

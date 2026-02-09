@@ -15,7 +15,7 @@ def register():
 
     try:
         register_user(data["email"], data["password"])
-        return jsonify({"message": "Usuario criado"}), 201
+        return jsonify({"message": "Usuario criado", "user": user}), 201
     except ValueError:
         return jsonify({"message": "Usuario ja existe"}), 400
 
@@ -23,9 +23,17 @@ def register():
 @auth_bp.route("/login", methods=["POST"])
 def login():
     data = request.get_json()
+    
+    if not data:
+        return jsonify({"message": "no data provided"}), 400
 
-    if authenticate_user(data["email"], data["password"]):
-        return jsonify({"message": "Login feito com sucesso"}), 200
+    if "email" not in data or "password" not in data:
+        return jsonify({"message": "email and password are required"}), 400
+
+    user = authenticate_user(data["email"], data["password"])
+    
+    if user:
+        return jsonify({"message": "Login feito com sucesso", "user": user}), 200
 
     return jsonify({"message": "Credenciais invalidas"}), 401
 

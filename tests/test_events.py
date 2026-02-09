@@ -7,10 +7,7 @@ def register_and_login(client):
     })
 
 
-def test_create_and_list_events():
-    app = create_app()
-    client = app.test_client()
-
+def test_create_and_list_events(client):
     register_and_login(client)
 
     response = client.post("/events", json={
@@ -22,6 +19,7 @@ def test_create_and_list_events():
     })
 
     assert response.status_code == 201
+    assert response.json["title"] == "Meeting"
 
     response = client.get("/events", query_string={
         "email": "user@test.com"
@@ -32,10 +30,7 @@ def test_create_and_list_events():
     assert response.json[0]["title"] == "Meeting"
 
 
-def test_update_event():
-    app = create_app()
-    client = app.test_client()
-
+def test_update_event(client):
     register_and_login(client)
 
     response = client.post("/events", json={
@@ -45,10 +40,11 @@ def test_update_event():
         "start_time": "2026-02-10T10:00",
         "end_time": "2026-02-10T11:00"
     })
-
+    
+    event_id = response.json["id"]
     assert response.status_code == 201
 
-    response = client.put("/events/1", json={
+    response = client.put(f"/events/{event_id}", json={
         "email": "user@test.com",
         "title": "New title"
     })
@@ -57,10 +53,7 @@ def test_update_event():
     assert response.json["title"] == "New title"
 
 
-def test_delete_event():
-    app = create_app()
-    client = app.test_client()
-
+def test_delete_event(client):
     register_and_login(client)
 
     response = client.post("/events", json={
@@ -71,9 +64,10 @@ def test_delete_event():
         "end_time": "2026-02-10T11:00"
     })
 
+    event_id = response.json["id"]
     assert response.status_code == 201
 
-    response = client.delete("/events/1", json={
+    response = client.delete(f"/events/{event_id}", json={
         "email": "user@test.com"
     })
 

@@ -6,13 +6,30 @@ events_bp = Blueprint("events", __name__)
 @events_bp.route("/events", methods=["POST"])
 def create():
     data = request.get_json()
-    event = create_event(data["email"], data)
-    return jsonify({"message": "Evento criado"}), 201
+
+    if not data:
+        return jsonify({"message": "no data provided"}), 400
+
+    required_fields = ["email", "title", "start_time", "end_time"]
+
+    for field in required_fields:
+        if field not in data:
+            return jsonify({"message": f"{field} is required"}), 400
+    
+    try:
+        event = create_event(data["email"], data)
+        return jsonify(event), 201
+    except ValueError as e:
+        return jsonify({"message": str(e)}), 404
 
 
 @events_bp.route("/events", methods=["GET"])
 def list_all():
     user_email = request.args.get("email")
+    
+    if not user_email:
+        return jsonify({"message": "email parameter is required"}), 400
+    
     events = list_events(user_email)
     return jsonify(events), 200
 
@@ -20,6 +37,10 @@ def list_all():
 @events_bp.route("/events/<int:event_id>", methods=["PUT"])
 def update(event_id):
     data = request.get_json()
+
+    if not data or "email" not in data:
+        return jsonify({"message": "email is required"}), 400
+
     event = update_event(event_id, data["email"], data)
 
     if not event:
@@ -31,5 +52,13 @@ def update(event_id):
 @events_bp.route("/events/<int:event_id>", methods=["DELETE"])
 def delete(event_id):
     data = request.get_json()
-    delete_event(event_id, data["email"])
-    return "", 204
+
+    if not data or "email" not in data:
+        return jsonify({"message": "email is required"}), 400
+    
+    success = delete_event(event_id, data["email"])
+
+    if success:
+        return "", 204
+    
+    return jsonify({"message": "event not found"}), 404

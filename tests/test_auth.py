@@ -1,21 +1,16 @@
 from app import create_app
 
-def test_register_user_success():
-    app = create_app()
-    client = app.test_client()
-
+def test_register_user_success(client):
     response = client.post("/register", json={
         "email":"user@test.com",
         "password":"123456"
     })
 
     assert response.status_code == 201
-    assert response.json["message"] == "Usuario criado"
+    assert "user" in response.json
 
-def rest_login_user_success():
-    app = create_app()
-    client = app.test_client()
 
+def test_login_user_success(client):
     client.post("/register", json={
         "email":"user@test.com",
         "password":"123456"
@@ -27,12 +22,10 @@ def rest_login_user_success():
     })
 
     assert response.status_code == 200
-    assert response.jason["message"] == "Login feito com sucesso"
+    assert "user" in response.json
 
-def test_login_user_wrong_password():
-    app = create_app()
-    client = app.test_client()
 
+def test_login_user_wrong_password(client):
     client.post("register", json={
         "email":"user@test.com",
         "password":"123456"
@@ -45,10 +38,8 @@ def test_login_user_wrong_password():
 
     assert response.status_code == 401
 
-def test_register_missing_password():
-    app = create_app()
-    client = app.test_client()
 
+def test_register_missing_password(client):
     response = client.post("/register", json={
         "email":"user@test.com"
     })
