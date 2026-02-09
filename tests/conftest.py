@@ -1,6 +1,7 @@
 import pytest
 from app import create_app
 from app.extensions import db as _db
+from sqlalchemy import text
 
 @pytest.fixture(scope="function")
 def app():
@@ -11,6 +12,13 @@ def app():
     })
 
     with app.app_context():
+        
+        try:
+            _db.session.execute(text("SELECT 1"))
+            _db.session.commit()
+        except Exception as e:
+            pytest.fail(f"Não conseguiu conectar no banco de teste: {e}")
+
         _db.create_all()
         yield app
         _db.session.remove()
