@@ -1,5 +1,7 @@
 pytest
 semgrep
-flask
+Flask
 werkzeug
-psycopg2-binary
+SQLAlchemy
+Flask-SQLAlchemy
+psycopg[binary]
