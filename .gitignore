@@ -15,3 +15,5 @@ env/
 .vscode/
 .idea/
 
+# Desenvolvimento
+init_db.py
