@@ -43,7 +43,7 @@ jobs:
 
       - name: Rodar testes
         run: |
-          pytest
+          pytest -v
 
       - name: Rodar Semgrep (SAST)
         uses: semgrep/semgrep-action@v1
