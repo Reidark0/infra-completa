@@ -1,0 +1,77 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Ambientes virtuais
+venv/
+env/
+ENV/
+.venv
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# Docker
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+.travis.yml
+
+# Testes
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+*.cover
+
+# Docs
+*.md
+docs/
+README.md
+LICENSE
+
+# Logs
+*.log
+logs/
+
+# Dados locais
+*.sqlite
+*.db
+postgres_data/
+
+# Configurações locais
+.env
+.env.local
+*.local
+
+# Arquivos temporários
+*.tmp
+*.bak
+*.swp
+test_connection.py
+init_db.py
+
+# Node (caso adicione frontend depois)
+node_modules/
+npm-debug.log

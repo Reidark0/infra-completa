@@ -1,29 +1,35 @@
 # App Web - Calendário
-A aplicação é simples, apenas um cadastro com login e senha para um calendário 
-a MAGIA vai acontecer por baixo dos panos, na **INFRAESTRUTURA**. O plano é ela ser de nível corporativo.
-No final esse projeto vai contar boas práticas de desenvolvimento, segurança e operação.
+Esta é uma aplicação funcional de calendário com sistema de autenticação, onde o foco principal reside na engenharia de INFRAESTRUTURA de alta disponibilidade. O projeto serve como um laboratório prático para simular ambientes de produção complexos.
 
 ## Objetivo
-Foco no processo, a complexidade vai ser na infra, não na aplicação
+O objetivo deste projeto é implementar uma infraestrutura de nível corporativo em escala reduzida, porém abrangente. O ecossistema integra ferramentas padrão de mercado sob as melhores práticas de Desenvolvimento (Dev), Segurança (Sec) e Operações (Ops).
+
+## Desenvolvimento Auxiliado por IA
+Este projeto foi desenvolvido utilizando metodologias de AI-Assisted Engineering. Utilizei inteligência artificial generativa para:
+- Revisão de Código e Arquitetura: Validação de padrões de design e estruturas de pacotes Python.
+- Pair Programming: Auxílio na escrita de testes unitários e depuração de erros de ambiente.
+- Consultoria DevSecOps: Suporte na escolha de ferramentas padrão de mercado e configuração de pipelines de CI/CD.
+
+O uso de IA neste projeto reflete a adoção de ferramentas modernas para acelerar o ciclo de desenvolvimento e garantir a conformidade com as melhores práticas da indústria.
 
 
 ## Stack atual
-- Phyton 3.11
-- Flask
-- Pytest
+- Phyton 3.11 (Flask | SQLAlchemy | Pytest)
 - Github Actions
 - SAST (Semgrep)
+- Postgresql 16
+- Docker
 
 
 ## Status
+- Testes unitários
 - Esteira Funcional com SAST
 - Flask Backend funcional
-- Testes unitários
 - PostgreSQL Implementado 
 - Docker local
 
 
-
+---
 # Previsão das ferramentas que vão ser usadas 
 | Cloud Azure | Kubernetes (Cluster & Ingress) | Observabilidade | GitOps / CI/CD / Segurança | TLS / ACME / Certificados | Infra como Código / Automação | Bastion / Operação | Aplicação / Desenvolvimento |
 |---|---|---|---|---|---|---|---|
@@ -57,7 +63,7 @@ Foco no processo, a complexidade vai ser na infra, não na aplicação
 - RBAC
 ----
 # Diário 
-05/02/2026 - Tudo certo, criando os primeiros passos do Flask
+05/02/2026 - Tudo certo, criando os primeiro os testes para guiar os próximos passos e ter certeza que tudo esta rodando certo.
 
 06/02/2026 - Dia de começar o backend com login e senha. Tantos typos no código que achei que tinha um analfabeto digitando, mas era só eu mesmo
 
