@@ -14,17 +14,18 @@ jobs:
       postgres:
         image: postgres:16
         env:
-          POSTGRES_DB: agenda
+          POSTGRES_DB: agenda_test
           POSTGRES_USER: agenda_user
           POSTGRES_PASSWORD: agenda_pass
-          POSTGRES_HOST_AUTH_METHOD: md5
         ports:
           - 5432:5432
         options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
+          --health-cmd pg_isready -U agenda_user
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+    env:
+      DATABASE_URL: postgresql://agenda_user:agenda_pass@localhost:5432/agenda_test
 
     steps:
       - name: Checkout do codigo
@@ -39,12 +40,6 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-
-      - name: Criar banco de teste
-        env:
-          PGPASSWORD: agenda_pass
-        run: |
-          psql -h localhost -U agenda_user -d agenda -c "CREATE DATABASE agenda_test;"
 
       - name: Rodar testes
         run: |
