@@ -5,7 +5,7 @@ from app.models import Event, User
 def create_event(user_email, data):
     user = User.query.filter_by(email=user_email).first()
 
-    if not User:
+    if not user:
         raise ValueError("user not found")
 
     event = Event(
@@ -13,7 +13,7 @@ def create_event(user_email, data):
         description=data.get("description", ""),
         start_time=data["start_time"],
         end_time=data["end_time"],
-        user_id=id
+        user_id=user.id
         )
 
     db.session.add(event)

@@ -13,6 +13,8 @@ def register():
     if "email" not in data or "password" not in data:
         return jsonify({"error": "Falta email ou password"}), 400
 
+    user = authenticate_user(data["email"], data["password"])
+
     try:
         register_user(data["email"], data["password"])
         return jsonify({"message": "Usuario criado", "user": user}), 201
