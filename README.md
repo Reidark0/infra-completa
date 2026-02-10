@@ -112,4 +112,9 @@ Foco no processo, a complexidade vai ser na infra, não na aplicação
 - Repositórios
 - RBAC
 
-Última alteração: 05/02/2026
+05/02/2026 - Tudo certo, criando os primeiros passos do Flask
+06/02/2026 - Dia de começar o backend com login e senha. Tantos typos no código que achei que tinha um analfabeto digitando, mas era só eu mesmo
+07/02/2026 - Criando os eventos para adicionar no calendario e terminando de arrumar as bagunças de ontem
+08/02/2026 - Mermão, quem gosta de programar é maluco, até 4h da manhã e não consegui conectar o backend no banco de dados
+09/02/2026 - 1h da manhã descobri o problema de ontem: PostGreSQL rodando localmente há uns 4 anos. Mas depois de resolvido caminhando a passos largos
+10/02/2026 - 
