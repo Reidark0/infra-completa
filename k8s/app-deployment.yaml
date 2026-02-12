@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: agenda-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: agenda-app
+  template:
+    metadata:
+      labels:
+        app: agenda-app
+    spec:
+      containers:
+        - name: agenda-app
+          image: agenda-app:local
+          imagePullPolicy: Never
+          env:
+            - name: DATABASE_URL
+              value: postgresql+psycopg://agenda_user:agenda_pass@postgres:5432/agenda
+          ports:
+            - containerPort: 5000
+          livenessProbe:
+            httpGet:
+              path: /health/live
+              port: 5000
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /health/ready
+              port: 5000
+            initialDelaySeconds: 10
+            periodSeconds: 10
