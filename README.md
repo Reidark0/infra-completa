@@ -73,8 +73,8 @@ O uso de IA neste projeto reflete a adoção de ferramentas modernas para aceler
 
 09/02/2026 - mais 3 horas hoje e finalmente descobri o problemam: PostGreSQL rodando localmente há uns 4 anos. Mas depois de resolvido caminhando a passos largos
 
-10/02/2026 - Dia de Dockerizar a aplicação
+10/02/2026 - Dia de Dockerizar a aplicação, deu tudo tão certo que acho que tem algum error fazendo tudo dar certo, mas um relogio parado acerta 2x por dia, né?
 
-
+11/02/2026 - 
 
 
