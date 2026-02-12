@@ -5,3 +5,4 @@ werkzeug
 SQLAlchemy
 flask-SQLAlchemy
 psycopg[binary]
+alembic

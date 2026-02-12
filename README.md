@@ -75,6 +75,6 @@ O uso de IA neste projeto reflete a adoção de ferramentas modernas para aceler
 
 10/02/2026 - Dia de Dockerizar a aplicação, deu tudo tão certo que acho que tem algum error fazendo tudo dar certo, mas um relogio parado acerta 2x por dia, né?
 
-11/02/2026 - 
+11/02/2026 - Dia de terminar de resolver problemas na máquina local e adiocionar o Alembic
 
 
