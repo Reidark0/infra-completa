@@ -13,4 +13,4 @@ COPY . .
 
 EXPOSE 5000
 
-CMD ["python", "-m", "app.main"]
+CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:5000", "app.main:app"]
