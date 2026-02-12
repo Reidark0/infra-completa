@@ -19,7 +19,7 @@ services:
       - /var/run/postgresql
 
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U agenda_user"]
+      test: ["CMD-SHELL", "pg_isready -U agenda_user -d agenda"]
       interval: 5s
       timeout: 5s
       retries: 5
@@ -27,12 +27,16 @@ services:
     build: .
     container_name: agenda_app
     environment:
-      DATABASE_URL: postgresql://agenda_user:agenda_pass@db:5432/agenda
+      DATABASE_URL: postgresql+psycopg://agenda_user:agenda_pass@db:5432/agenda
     ports:
       - "5000:5000"
     depends_on:
       db: 
         condition: service_healthy
+    
+    command: sh -c "python init_db.py && python -m flask run --host=0.0.0.0 --port=5000"
+    
+
 
 volumes:
   postgres_data:

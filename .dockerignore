@@ -69,8 +69,6 @@ postgres_data/
 *.tmp
 *.bak
 *.swp
-test_connection.py
-init_db.py
 
 # Node (caso adicione frontend depois)
 node_modules/

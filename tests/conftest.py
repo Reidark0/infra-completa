@@ -6,7 +6,7 @@ from app.extensions import db as _db
 def app():
     app = create_app(config_override={
         "TESTING": True,
-        "SQLALCHEMY_DATABASE_URI": "postgresql+psycopg://agenda_user:agenda_pass@localhost:5432/agenda_test",
+        "SQLALCHEMY_DATABASE_URI": "sqlite:///:memory:",
         "SQLALCHEMY_TRACK_MODIFICATIONS": False,
     })
 
