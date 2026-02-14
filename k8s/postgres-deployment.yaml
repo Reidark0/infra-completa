@@ -15,6 +15,9 @@ spec:
       containers:
         - name: postgres
           image: postgres:16
+          securityContext:
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
           env:
             - name: POSTGRES_DB
               value: agenda
