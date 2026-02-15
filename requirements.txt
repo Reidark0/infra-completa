@@ -7,3 +7,4 @@ flask-SQLAlchemy
 psycopg[binary]
 alembic
 gunicorn
+flask-cors

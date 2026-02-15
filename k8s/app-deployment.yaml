@@ -16,9 +16,9 @@ spec:
         - name: agenda-app
           image: agenda-app:local
           imagePullPolicy: Never
-          securityContext:
-            allowPrivilegeEscalation: false
-            runAsNonRoot: true
+          # securityContext:
+          #   allowPrivilegeEscalation: false
+          #   runAsNonRoot: true
           env:
             - name: DATABASE_URL
               value: postgresql+psycopg://agenda_user:agenda_pass@postgres:5432/agenda
