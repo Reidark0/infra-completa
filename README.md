@@ -21,6 +21,7 @@ O uso de IA neste projeto reflete a adoção de ferramentas modernas para aceler
 - Docker
 - Alembic
 - Gunicorn
+- Kubernetes
 
 
 ## Status
@@ -29,6 +30,7 @@ O uso de IA neste projeto reflete a adoção de ferramentas modernas para aceler
 - Flask Backend funcional
 - PostgreSQL Implementado 
 - Docker local
+- Kubernetes local com Ingress
 
 
 ---
@@ -79,6 +81,8 @@ O uso de IA neste projeto reflete a adoção de ferramentas modernas para aceler
 
 11/02/2026 - Dia de terminar de resolver problemas na máquina local e adiocionar o Alembic, Gunicorn. ta sendo a parte mais tranquila.
 
-12/02/2026 - 
+12/02/2026 - O inicio do pesadelo: Docker para kubernetes e mil inconsistencias
 
+15/02/2026 - Ele continua, cada mudança gera novos erros. Vibe coding esta cobrando sem preço, Configuração de k8s, ingress etc.
 
+17/02/2026 - DESAFIO VENCIDO: O cluster Kubernetes é acessivel pelo navegador. Agora vamos pra parte que acredito ser a mais de boa: Migrar pro azure usando Terraform.
