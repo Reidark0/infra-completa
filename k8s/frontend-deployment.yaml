@@ -12,9 +12,23 @@ spec:
       labels:
         app: frontend
     spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 101 
+        fsGroup: 101
+      
       containers:
         - name: frontend
           image: agenda-frontend:local
           imagePullPolicy: Never
+          
+          securityContext:
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            runAsUser: 101
+            capabilities:
+              drop:
+                - ALL
+          
           ports:
             - containerPort: 80

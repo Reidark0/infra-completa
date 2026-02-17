@@ -12,24 +12,38 @@ spec:
       labels:
         app: agenda-app
     spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000      
+        fsGroup: 1000   
+      
       containers:
         - name: agenda-app
           image: agenda-app:local
           imagePullPolicy: Never
-          # securityContext:
-          #   allowPrivilegeEscalation: false
-          #   runAsNonRoot: true
+          
+          securityContext:
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            runAsUser: 1000
+            capabilities:
+              drop:
+                - ALL   
+          
           env:
             - name: DATABASE_URL
               value: postgresql+psycopg://agenda_user:agenda_pass@postgres:5432/agenda
+          
           ports:
             - containerPort: 5000
+          
           livenessProbe:
             httpGet:
               path: /health/live
               port: 5000
             initialDelaySeconds: 10
             periodSeconds: 10
+          
           readinessProbe:
             httpGet:
               path: /health/ready
