@@ -1,5 +1,3 @@
-# nosemgrep: yaml.kubernetes.security.run-as-non-root.run-as-non-root
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
