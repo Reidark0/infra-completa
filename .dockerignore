@@ -73,3 +73,28 @@ postgres_data/
 # Node (caso adicione frontend depois)
 node_modules/
 npm-debug.log
+
+# Terraform
+.terraform
+*.tfstate
+*.tfstate.*
+*.tfplan
+*.tfvars
+*.auto.tfvars
+crash.log
+
+# Git
+.git
+.gitignore
+
+# Node
+node_modules
+dist
+build
+
+# Python
+__pycache__
+*.pyc
+
+# Env files
+.env
