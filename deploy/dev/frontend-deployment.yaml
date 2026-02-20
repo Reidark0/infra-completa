@@ -19,7 +19,7 @@ spec:
       
       containers:
         - name: frontend
-          image: agendadevacr.azurecr.io/frontend:latest
+          image: agendadevacr.azurecr.io/frontend:REPLACE_ME
           imagePullPolicy: Always
           
           securityContext:

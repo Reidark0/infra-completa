@@ -1,4 +1,4 @@
-name: CD - Deploy AKS
+name: CD - GitOps
 
 on:
   push:
@@ -7,16 +7,16 @@ on:
 
 env:
   ACR_NAME: agendadevacr
-  RESOURCE_GROUP: agenda-dev-rg
-  AKS_NAME: agenda-dev-aks
 
 jobs:
-  deploy:
+  gitops:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Login Azure
         uses: azure/login@v1
@@ -31,7 +31,7 @@ jobs:
 
       - name: Login no ACR
         run: az acr login --name $ACR_NAME
-          
+
       - name: Build Backend
         run: |
           docker build -t $LOGIN_SERVER/backend:${{ github.sha }} .
@@ -42,14 +42,18 @@ jobs:
           docker build -t $LOGIN_SERVER/frontend:${{ github.sha }} ./frontend
           docker push $LOGIN_SERVER/frontend:${{ github.sha }}
 
-      - name: Get AKS credentials
+      - name: Update Backend Image Tag
         run: |
-          az aks get-credentials --name $AKS_NAME --resource-group $RESOURCE_GROUP --overwrite-existing
+          sed -i "s|backend:REPLACE_ME|backend:${{ github.sha }}|g" deploy/dev/backend.yaml
 
-      - name: Update Backend Image
+      - name: Update Frontend Image Tag
         run: |
-          kubectl set image deployment/agenda-app agenda-app=$LOGIN_SERVER/backend:${{ github.sha }}
+          sed -i "s|frontend:REPLACE_ME|frontend:${{ github.sha }}|g" deploy/dev/frontend.yaml
 
-      - name: Update Frontend Image
+      - name: Commit and Push
         run: |
-          kubectl set image deployment/frontend frontend=$LOGIN_SERVER/frontend:${{ github.sha }}
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add deploy/dev/
+          git commit -m "GitOps deploy ${{ github.sha }}" || echo "No changes"
+          git push
