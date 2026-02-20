@@ -22,15 +22,25 @@ O uso de IA neste projeto reflete a adoção de ferramentas modernas para aceler
 - Alembic
 - Gunicorn
 - Kubernetes
+- Nginx
+- AKS
+- ACR
+- CloudFlare
+- ArgoCD
+- CI/CD
 
 
 ## Status
 - Testes unitários
-- Esteira Funcional com SAST
+- ~~Esteira Funcional com SAST~~
+- Esteira de CI/CD com ArgoCD
 - Flask Backend funcional
-- PostgreSQL Implementado 
-- Docker local
-- Kubernetes local com Ingress
+- ~~PostgreSQL Implementado~~
+- ~~Docker local~~
+- ~~Kubernetes local com Ingress~~
+- AKS com ACR
+- Postgres no Azure
+- Dominio no Cloudflare
 
 
 ---
@@ -86,3 +96,7 @@ O uso de IA neste projeto reflete a adoção de ferramentas modernas para aceler
 15/02/2026 - Ele continua, cada mudança gera novos erros. Vibe coding esta cobrando sem preço, Configuração de k8s, ingress etc.
 
 17/02/2026 - DESAFIO VENCIDO: O cluster Kubernetes é acessivel pelo navegador. Agora vamos pra parte que acredito ser a mais de boa: Migrar pro azure usando Terraform.
+
+19/20/2026 - Estrutura migrada para o azure, mas ainda não esta acessivel. Grande parte do dia foi criando contas e registrando dominiio
+
+19/20/2026 - Finalmente o site esta no Ar! estamos oficialmente online! o endereço é: rafaelcesar.com.br bem fácil de lembrar! o site ainda não ta usavel pois falta o frontend ter os campos de input, mas ao backend esta respondendo e tudo esta seguindo o planejado. Hoje tambem foi intalado a esteira de CD e o Argo
