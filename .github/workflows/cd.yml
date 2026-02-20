@@ -29,6 +29,9 @@ jobs:
           LOGIN_SERVER=$(az acr show --name $ACR_NAME --query loginServer -o tsv)
           echo "LOGIN_SERVER=$LOGIN_SERVER" >> $GITHUB_ENV
 
+      - name: Login no ACR
+        run: az acr login --name $ACR_NAME
+          
       - name: Build Backend
         run: |
           docker build -t $LOGIN_SERVER/backend:${{ github.sha }} .
