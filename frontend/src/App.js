@@ -34,8 +34,8 @@ function App() {
         fontFamily: "Arial",
         color: "white", // Texto branco para aparecer no fundo preto
       }}>
-        <h1 style={{ textShadow: "2px 2px 10px rgba(0,0,0,0.8)" }}>Agenda App 🚀</h1>
-        <h2>Status do Backend:</h2>
+        <h1 style={{ textShadow: "2px 2px 10px rgba(0,0,0,0.8)" }}>Agenda App do REI Rafael 🚀</h1>
+        <h2>Backend tá como:</h2>
         <p style={{ 
           fontSize: "24px", 
           fontWeight: "bold", 

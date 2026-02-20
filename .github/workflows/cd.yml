@@ -1,0 +1,52 @@
+name: CD - Deploy AKS
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  ACR_NAME: agendadevacr
+  RESOURCE_GROUP: agenda-dev-rg
+  AKS_NAME: agenda-dev-aks
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Login Azure
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Get ACR login server
+        id: acr
+        run: |
+          LOGIN_SERVER=$(az acr show --name $ACR_NAME --query loginServer -o tsv)
+          echo "LOGIN_SERVER=$LOGIN_SERVER" >> $GITHUB_ENV
+
+      - name: Build Backend
+        run: |
+          docker build -t $LOGIN_SERVER/backend:${{ github.sha }} .
+          docker push $LOGIN_SERVER/backend:${{ github.sha }}
+
+      - name: Build Frontend
+        run: |
+          docker build -t $LOGIN_SERVER/frontend:${{ github.sha }} ./frontend
+          docker push $LOGIN_SERVER/frontend:${{ github.sha }}
+
+      - name: Get AKS credentials
+        run: |
+          az aks get-credentials --name $AKS_NAME --resource-group $RESOURCE_GROUP --overwrite-existing
+
+      - name: Update Backend Image
+        run: |
+          kubectl set image deployment/agenda-app agenda-app=$LOGIN_SERVER/backend:${{ github.sha }}
+
+      - name: Update Frontend Image
+        run: |
+          kubectl set image deployment/frontend frontend=$LOGIN_SERVER/frontend:${{ github.sha }}
