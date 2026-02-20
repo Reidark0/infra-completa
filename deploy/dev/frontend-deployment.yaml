@@ -19,7 +19,7 @@ spec:
       
       containers:
         - name: frontend
-          image: agendadevacr.azurecr.io/frontend:5c75884781fd44b6627823965e9193cf1028c581
+          image: agendadevacr.azurecr.io/frontend:9a9471488695a95ce7a5b5980e9267c8a04e8ffa
           imagePullPolicy: Always
           
           securityContext:
