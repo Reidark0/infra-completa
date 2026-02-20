@@ -73,3 +73,10 @@ postgres_data/
 # Node (caso adicione frontend depois)
 node_modules/
 npm-debug.log
+
+# Pastas
+frontend/
+infra/
+k8s/
+migration/
+tests/

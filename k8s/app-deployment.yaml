@@ -19,8 +19,8 @@ spec:
       
       containers:
         - name: agenda-app
-          image: agenda-app:local
-          imagePullPolicy: Never
+          image: agendadevacr.azurecr.io/backend:v1
+          imagePullPolicy: Always
           
           securityContext:
             allowPrivilegeEscalation: false

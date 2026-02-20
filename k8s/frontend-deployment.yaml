@@ -19,8 +19,8 @@ spec:
       
       containers:
         - name: frontend
-          image: agenda-frontend:local
-          imagePullPolicy: Never
+          image: agendadevacr.azurecr.io/frontend:v1
+          imagePullPolicy: Always
           
           securityContext:
             allowPrivilegeEscalation: false
@@ -31,4 +31,4 @@ spec:
                 - ALL
           
           ports:
-            - containerPort: 80
+            - containerPort: 8080

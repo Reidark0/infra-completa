@@ -98,3 +98,10 @@ __pycache__
 
 # Env files
 .env
+
+# Pastas
+frontend/
+infra/
+k8s/
+migration/
+tests/
