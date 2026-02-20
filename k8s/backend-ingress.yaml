@@ -8,7 +8,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: agenda.local
+    - host: rafaelcesar.com.br
       http:
         paths:
           - path: /api(/|$)(.*)
