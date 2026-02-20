@@ -1,1 +1,1 @@
-k8s/postgres-deployment.yaml 
+deploy/dev/postgres-deployment.yaml 

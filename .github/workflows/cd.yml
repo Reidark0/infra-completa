@@ -44,11 +44,11 @@ jobs:
 
       - name: Update Backend Image Tag
         run: |
-          sed -i "s|backend:REPLACE_ME|backend:${{ github.sha }}|g" deploy/dev/backend.yaml
+          sed -i "s|backend:REPLACE_ME|backend:${{ github.sha }}|g" deploy/dev/backend-deployment.yaml
 
       - name: Update Frontend Image Tag
         run: |
-          sed -i "s|frontend:REPLACE_ME|frontend:${{ github.sha }}|g" deploy/dev/frontend.yaml
+          sed -i "s|frontend:REPLACE_ME|frontend:${{ github.sha }}|g" deploy/dev/frontend-deployment.yaml
 
       - name: Commit and Push
         run: |
