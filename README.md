@@ -97,6 +97,8 @@ O uso de IA neste projeto reflete a adoção de ferramentas modernas para aceler
 
 17/02/2026 - DESAFIO VENCIDO: O cluster Kubernetes é acessivel pelo navegador. Agora vamos pra parte que acredito ser a mais de boa: Migrar pro azure usando Terraform.
 
-19/20/2026 - Estrutura migrada para o azure, mas ainda não esta acessivel. Grande parte do dia foi criando contas e registrando dominiio
+19/02/2026 - Estrutura migrada para o azure, mas ainda não esta acessivel. Grande parte do dia foi criando contas e registrando dominiio
 
-19/20/2026 - Finalmente o site esta no Ar! estamos oficialmente online! o endereço é: rafaelcesar.com.br bem fácil de lembrar! o site ainda não ta usavel pois falta o frontend ter os campos de input, mas ao backend esta respondendo e tudo esta seguindo o planejado. Hoje tambem foi intalado a esteira de CD e o Argo
+20/02/2026 - Finalmente o site esta no Ar! estamos oficialmente online! o endereço é: rafaelcesar.com.br bem fácil de lembrar! o site ainda não ta usavel pois falta o frontend ter os campos de input, mas ao backend esta respondendo e tudo esta seguindo o planejado. Hoje tambem foi intalado a esteira de CD e o Argo
+
+21/02/2026 - Criação do Key-Vault  e migração do banco de dados do pod no Kubernetes para o Azure Postgres

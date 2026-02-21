@@ -73,3 +73,20 @@ module "postgres" {
   admin_password      = var.postgres_admin_password
   tags                = local.common_tags
 }
+
+module "keyvault" {
+  source = "../../modules/keyvault"
+  
+  name                = "${local.prefix}-kv"
+  location            = module.rg.location
+  resource_group_name = module.rg.name
+  
+  postgres_password = var.postgres_admin_password
+  postgres_user     = var.postgres_admin_user
+  
+  aks_kubelet_identity_object_id = module.aks.kubelet_identity_object_id
+  
+  tags = local.common_tags
+  
+  depends_on = [module.aks]
+}
