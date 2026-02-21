@@ -14,12 +14,12 @@ spec:
     spec:
       securityContext:
         runAsNonRoot: true
-        runAsUser: 1000      
-        fsGroup: 1000   
+        runAsUser: 1000
+        fsGroup: 1000
       
       containers:
         - name: agenda-app
-          image: agendadevacr.azurecr.io/backend:9a9471488695a95ce7a5b5980e9267c8a04e8ffa
+          image: agendadevacr.azurecr.io/backend:latest
           imagePullPolicy: Always
           
           securityContext:
@@ -28,14 +28,25 @@ spec:
             runAsUser: 1000
             capabilities:
               drop:
-                - ALL   
+                - ALL
           
           env:
+            - name: DB_USER
+              value: "agendaadmin"  
+            - name: DB_HOST
+              value: "agenda-dev-postgres.postgres.database.azure.com"
+            - name: DB_NAME
+              value: "agenda"
             - name: DATABASE_URL
-              value: postgresql+psycopg://agenda_user:agenda_pass@postgres:5432/agenda
+              value: "postgresql+psycopg://$(DB_USER):$(cat /mnt/secrets/DB_PASSWORD)@$(DB_HOST):5432/$(DB_NAME)"
           
           ports:
             - containerPort: 5000
+          
+          volumeMounts:
+            - name: secrets-store
+              mountPath: "/mnt/secrets"
+              readOnly: true
           
           livenessProbe:
             httpGet:
@@ -50,3 +61,11 @@ spec:
               port: 5000
             initialDelaySeconds: 10
             periodSeconds: 10
+      
+      volumes:
+        - name: secrets-store
+          csi:
+            driver: secrets-store.csi.k8s.io
+            readOnly: true
+            volumeAttributes:
+              secretProviderClass: "azure-postgres-secrets"
