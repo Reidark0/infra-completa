@@ -19,7 +19,7 @@ spec:
       
       containers:
         - name: agenda-app
-          image: agendadevacr.azurecr.io/backend:3e294d04c245840e8e8ed474ec9fcf15091bfaae
+          image: agendadevacr.azurecr.io/backend:387af6c8097a0fbd4b4c84fa7d98c1d33620740f
           imagePullPolicy: Always
           
           securityContext:
